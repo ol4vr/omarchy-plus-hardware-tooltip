@@ -574,8 +574,8 @@ BarWidget {
               value: modelData.percent + "%"
               percent: modelData.percent
               caption: modelData.name
-                ? modelData.mount + " · " + modelData.used + " / " + modelData.total + " GiB"
-                : modelData.used + " / " + modelData.total + " GiB"
+                ? modelData.mount + " · " + modelData.used + " / " + modelData.total + " GB"
+                : modelData.used + " / " + modelData.total + " GB"
             }
           }
         }

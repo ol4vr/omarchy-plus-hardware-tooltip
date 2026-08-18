@@ -10,7 +10,7 @@
 #   gpu <percent> | n/a
 #   gpu_name <rest of line>
 #   gpu_kind render | infer
-#   disk <mount> <used-gib> <total-gib> <percent> [model...]
+#   disk <mount> <used-gb> <total-gb> <percent> [model...]
 #
 # GPU source is the first tool that actually returns a sample:
 #   NVIDIA -> nvidia-smi (nvidia-utils; skipped if the driver is not talking)
@@ -739,11 +739,11 @@ disk_model() {
   printf '%s' "$model"
 }
 
-df -P -x tmpfs -x devtmpfs -x squashfs -x overlay -x iso9660 2>/dev/null |
+df -P -B1 -x tmpfs -x devtmpfs -x squashfs -x overlay -x iso9660 2>/dev/null |
   awk 'NR > 1 && $1 ~ /^\/dev\// && !seen[$1]++ { print $1, $2, $3, $6 }' |
   while read -r src blocks used mnt; do
-    used_g=$(awk -v n="$used" 'BEGIN { printf "%.1f", n / 1048576 }')
-    total_g=$(awk -v n="$blocks" 'BEGIN { printf "%.1f", n / 1048576 }')
+    used_g=$(awk -v n="$used" 'BEGIN { printf "%.1f", n / 1000000000 }')
+    total_g=$(awk -v n="$blocks" 'BEGIN { printf "%.1f", n / 1000000000 }')
     pct=$(awk -v u="$used" -v t="$blocks" 'BEGIN { printf "%.0f", (t > 0) ? u / t * 100 : 0 }')
     model=$(disk_model "$src")
     if [[ -n $model ]]; then

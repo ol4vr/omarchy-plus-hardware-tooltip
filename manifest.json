@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "id": "im0001gt.hw-tooltip",
-  "name": "Hardware Tooltip",
-  "version": "1.4.0",
-  "author": "IM0001GT",
+  "id": "io.github.ol4vr.hardware-tooltip",
+  "name": "Omarchy+ Hardware Tooltip",
+  "version": "1.4.1",
+  "author": "Olav Rorvik",
   "license": "MIT",
-  "homepage": "https://github.com/IM0001GT/omarchy-hw-tooltip",
+  "homepage": "https://github.com/ol4vr/omarchy-plus-hardware-tooltip",
   "description": "Omarchy-native hover panel that names your CPU, RAM, GPU, and disks, then shows live load bars that follow the theme",
   "kinds": [
     "bar-widget"
